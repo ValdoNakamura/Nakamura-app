@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Crear from './src/Pages/Crear';
 import Login from './src/Pages/Login';
 import Home from './src/Pages/Home';
-import Register from './src/Pages/Register'; // Importa el nuevo componente
+import Register from './src/Pages/Register';
 
 export default function App() {
 
