@@ -6,8 +6,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 //importamos nuestros componentes
-import Login from './src/Pages/Login';
-import Home from './src/Pages/Home';
+import Crear from './src/Pages/Crear';
+import Login from './src/Pages/Login'
+import Home from './src/Pages/Home'
 
 export default function App() {
 
@@ -16,6 +17,14 @@ export default function App() {
   function MyStack() {
     return (
       <Stack.Navigator>
+        <Stack.Screen name="Crear" component={Crear}
+        options={{
+          title: 'Agregar Contacto',
+          headerTintColor: 'white',
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: '#525FE1' }
+        }}/>
+
         <Stack.Screen name="Login" component={Login}
         options={{
           title: 'Iniciar Sesion',
@@ -23,6 +32,7 @@ export default function App() {
           headerTitleAlign: 'center',
           headerStyle: { backgroundColor: '#525FE1' }
         }}/>
+
         <Stack.Screen name="Home" component={Home} 
         options={{
           title: 'Home',

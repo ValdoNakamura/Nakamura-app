@@ -29,11 +29,17 @@ export default function Login(props) {
 
       <View style={style.tarjeta}>
         <View style={style.cajatexto}>
-          <TextInput placeholder='Correo Electronico' style={{paddingHorizontal:15}} onChangeText={(text)=>setEmail(text)}/>
+          <TextInput placeholder='Correo Electronico' 
+          style={{paddingHorizontal:15}} 
+          onChangeText={(text)=>setEmail(text)}/>
         </View>
 
         <View style={style.cajatexto}>
-          <TextInput placeholder='Contraseña' style={{paddingHorizontal:15}} secureTextEntry={true}  onChangeText={(text)=>setPassword(text)}/>
+          <TextInput placeholder='Contraseña'
+          style={{paddingHorizontal:15}} 
+          secureTextEntry={true}  
+          onChangeText={(text)=>setPassword(text)}
+          />
         </View>
 
         <View style={style.padreboton}>
