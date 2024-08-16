@@ -1,14 +1,12 @@
-import 'react-native-gesture-handler'; //nos servira para el manejo de distintas paginas de la app
+import 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
-
-//importacion de los componentes para el enrutamiento
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-//importamos nuestros componentes
 import Crear from './src/Pages/Crear';
-import Login from './src/Pages/Login'
-import Home from './src/Pages/Home'
+import Login from './src/Pages/Login';
+import Home from './src/Pages/Home';
+import Register from './src/Pages/Register'; // Importa el nuevo componente
 
 export default function App() {
 
@@ -17,17 +15,17 @@ export default function App() {
   function MyStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="Crear" component={Crear}
+        <Stack.Screen name="Login" component={Login}
         options={{
-          title: 'Agregar Contacto',
+          title: 'Iniciar Sesión',
           headerTintColor: 'white',
           headerTitleAlign: 'center',
           headerStyle: { backgroundColor: '#525FE1' }
         }}/>
 
-        <Stack.Screen name="Login" component={Login}
+        <Stack.Screen name="Register" component={Register} 
         options={{
-          title: 'Iniciar Sesion',
+          title: 'Registro',
           headerTintColor: 'white',
           headerTitleAlign: 'center',
           headerStyle: { backgroundColor: '#525FE1' }
@@ -40,6 +38,15 @@ export default function App() {
           headerTitleAlign: 'center',
           headerStyle: { backgroundColor: '#525FE1' }
         }}/>
+
+        <Stack.Screen name="Crear" component={Crear}
+        options={{
+          title: 'Agregar Contacto',
+          headerTintColor: 'white',
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: '#525FE1' }
+        }}/>
+
       </Stack.Navigator>
     );
   }

@@ -2,34 +2,34 @@ import { Text, TextInput, View, StyleSheet, Image, TouchableOpacity, Alert } fro
 import React, { useState } from 'react'
 
 import appFirebase from '../../firebase-config'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 const auth = getAuth(appFirebase)
 
-export default function Login(props) {
+export default function Register(props) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const logueo = async () => {
+  const registrar = async () => {
     if (email === '' || password === '') {
       setErrorMessage('Por favor ingrese todos los campos.')
       return
     }
 
     try {
-      await signInWithEmailAndPassword(auth, email, password)
-      Alert.alert('Iniciando sesión', 'Accediendo...')
-      props.navigation.navigate('Home')
+      await createUserWithEmailAndPassword(auth, email, password)
+      Alert.alert('Registro exitoso', 'La cuenta ha sido creada exitosamente.')
+      props.navigation.navigate('Login')
     } catch (error) {
       console.log(error)
-      let message = 'Usuario o contraseña incorrecta.'
-      if (error.code === 'auth/user-not-found') {
-        message = 'Usuario no encontrado.'
-      } else if (error.code === 'auth/wrong-password') {
-        message = 'Contraseña incorrecta.'
+      let message = 'No se pudo crear la cuenta.'
+      if (error.code === 'auth/email-already-in-use') {
+        message = 'Este correo ya está en uso.'
       } else if (error.code === 'auth/invalid-email') {
         message = 'Correo electrónico inválido.'
+      } else if (error.code === 'auth/weak-password') {
+        message = 'La contraseña es demasiado débil.'
       }
       setErrorMessage(message)
     }
@@ -39,7 +39,7 @@ export default function Login(props) {
     <View style={styles.container}>
       <Image source={require('../../assets/Caballero.jpeg')} style={styles.profileImage} />
       <View style={styles.card}>
-        <Text style={styles.title}>Iniciar Sesión</Text>
+        <Text style={styles.title}>Registro</Text>
         {errorMessage ? <Text style={styles.errorText}>{errorMessage}</Text> : null}
         <TextInput 
           placeholder='Correo Electrónico' 
@@ -52,11 +52,11 @@ export default function Login(props) {
           secureTextEntry={true} 
           onChangeText={(text) => setPassword(text)} 
         />
-        <TouchableOpacity style={styles.button} onPress={logueo}>
-          <Text style={styles.buttonText}>Iniciar</Text>
+        <TouchableOpacity style={styles.button} onPress={registrar}>
+          <Text style={styles.buttonText}>Registrar</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigation.navigate('Register')}>
-          <Text style={styles.registerLink}>¿No tienes una cuenta? Regístrate</Text>
+        <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
+          <Text style={styles.loginLink}>¿Ya tienes una cuenta? Inicia sesión</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
-  registerLink: {
+  loginLink: {
     marginTop: 20,
     color: '#525FE1',
     textAlign: 'center',
