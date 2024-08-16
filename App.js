@@ -15,14 +15,6 @@ export default function App() {
   function MyStack() {
     return (
       <Stack.Navigator>
-        <Stack.Screen name="Crear" component={Crear}
-        options={{
-          title: 'Agregar Contacto',
-          headerTintColor: 'white',
-          headerTitleAlign: 'center',
-          headerStyle: { backgroundColor: '#525FE1' }
-        }}/>
-        
         <Stack.Screen name="Login" component={Login}
         options={{
           title: 'Iniciar Sesión',
@@ -30,15 +22,7 @@ export default function App() {
           headerTitleAlign: 'center',
           headerStyle: { backgroundColor: '#525FE1' }
         }}/>
-
-        <Stack.Screen name="Register" component={Register} 
-        options={{
-          title: 'Registro',
-          headerTintColor: 'white',
-          headerTitleAlign: 'center',
-          headerStyle: { backgroundColor: '#525FE1' }
-        }}/>
-
+        
         <Stack.Screen name="Home" component={Home} 
         options={{
           title: 'Home',
@@ -46,8 +30,22 @@ export default function App() {
           headerTitleAlign: 'center',
           headerStyle: { backgroundColor: '#525FE1' }
         }}/>
-
         
+        <Stack.Screen name="Crear" component={Crear}
+        options={{
+          title: 'Agregar Contacto',
+          headerTintColor: 'white',
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: '#525FE1' }
+        }}/>
+  
+        <Stack.Screen name="Register" component={Register} 
+        options={{
+          title: 'Registro',
+          headerTintColor: 'white',
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: '#525FE1' }
+        }}/>
 
       </Stack.Navigator>
     );

@@ -1,10 +1,12 @@
 import { Text, Image, View, StyleSheet } from 'react-native'
 import React from 'react'
+import ContactList from '../Components/ContactList'
+
 
 export default function Home() {
   return (
     <View>  
-      <Text>Hola mi nombre es valdo</Text>
+      <ContactList/>
     </View>
   )
 }
